@@ -1,0 +1,138 @@
+/* hemos traslado style.css de template aqui tal cual lo teniamos*/
+/* /////////////////////// */
+
+html {
+  font-size: 62.5%; /* 16px *62.5 = 10px = 1rem The default font-size in the browser is 16px. So if we multiply that by 62.5% is equal to 10px iqual to 1rem.*/
+  box-sizing: border-box; /* Helps us to better format boxes with paddings and margins */
+}
+
+body{
+  font: 1.6rem Verdana;
+  height: 100vh ; /*Viewport height*/
+  margin: 0;
+}
+
+.grid-container { /*We definine a new class, that's why we use dot. Grid:cuadricula */
+  display: grid;  /* layouting the style in the html file */
+  grid-template-areas: /* definimos las areas */
+  "header"
+  "main"
+  "footer" ;
+  grid-template-columns: 1fr ;  /*solo una columna*/
+  grid-template-rows: 5rem 1fr 5rem; /* 3 lineas : header - main - footer*/
+  height: 100%;
+} 
+.header{
+  grid-area: header;
+  background-color: #203040;
+  color: #ffffff;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem; /*separacion lateral de los bordes */
+
+}
+.brand a{
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  
+}
+
+.header-links a{
+  color: #ffffff;
+  text-decoration: none;
+  margin: 1rem;
+}
+
+.header-links a:hover{ /*hover viene a ser el puntero o señalador*/
+  color:#fca311;
+
+}
+.main{
+  grid-area: main;
+}
+.footer{
+  grid-area: footer;
+  background-color: #203040;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a{
+  text-decoration: none; /* rid off the underline */
+}
+a:hover{
+  color: #fca311;
+}
+
+/* HOME SCREEN*/
+.products{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /*Para agrupar los productos al tamaño de la pagina. Con esto lo hacemos responsive*/
+}
+.products li{
+  list-style-type: none; /*eliminar punto en el listado */
+  padding: 0;
+  flex: 0 1 34rem; 
+  margin: 1rem;
+  height: 45rem;
+  border-bottom: .2rem #c0c0c0 solid;
+}
+.product{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  height: 100%;
+
+}
+.product-name{
+  font-size: 2rem;
+  font-weight: bold;
+}
+.product-brand{
+  font-size: 1.8rem;
+  color: #808080
+}
+.product-price{
+  font-size: 2rem;
+  font-weight: bold;
+}
+.product-image {
+  max-width: 34rem;
+  max-height: 34rem;
+}
+.product-rating{
+  margin-bottom: 1rem;
+}
+
+/*SIDEBAR*/
+.brand button{
+  font-size: 3rem;
+  padding: .5rem;
+  background: none;
+  border: none;
+  color: white;
+}
+.sidebar{
+  position: fixed; /* to keep it on top to the screen */
+  transition: all .10se; /*create some animation */
+  transform: translateX(-30rem); 
+  width: 30rem; /*con estos style mantenemos el sidebar a la izq afuera de la pantalla */
+  background-color: #e5e5e5;
+  height: 100%;
+}
+.sidebar.open{
+  transform: translateX(0); 
+}
+.sidebar-close-button {
+  cursor: pointer;
+  position: absolute; 
+  right: .5rem;
+  top: 1.5rem; /*con estos 3 ultimos style situamos el boton a la derecha/top */
+  font-size: 15px;
+}
