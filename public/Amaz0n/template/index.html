@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    
+    <head> <!-- Style, script and meta-data --> 
+        <link rel='stylesheet' href='style.css' /> <!-- 2 Opciones para el style: here Style-line or usar CSS-->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <title>Amaz0n</title> <!--Titulo para pestaña  --> 
+    </head>
+
+    <body>
+        <div class= "grid-container">
+            <header class="header">
+                <div class="brand">
+                    <button onclick="openMenu()"> <!-- JavaScript Function-->
+                        &#9776; <!-- Icono despegable Sidebar -->
+                    </button>
+                    <a href="index.html">Amaz0n</a>
+                </div>
+                <div class="header-links">
+                    <a href="cart.html">Cart</a>
+                    <a href="signin.html">Sign In</a>
+                </div>
+            </header>
+            
+            <aside class="sidebar">  <!--  sidebar: menu lateral -->
+                <h3>Shopping Categories</h3>
+                <button class="sidebar-close-button" onclick="closeMenu()">X</button> <!-- JavaScript Function-->
+                <ul>
+                    <li>
+                        <a href="index.html">Shirts</a>
+                    </li>
+                    <li>
+                        <a href="index.html">Sweaters</a>
+                    </li>
+                </ul> 
+            </aside> 
+
+            <main class= "main">
+                <div class="content">
+                    <ul class="products">
+                        <li>
+                            <div class="product">
+                                <img class="product-image" src="../images/d1.jpg" alt="product" />
+                                <div class="product-name">
+                                    <a href="product.html">Lightweight Shirt</a>
+                                </div>
+                                <div class="product-brand">Patagonia</div>
+                                <div class="product-price">$60,00</div>
+                                <div class="product-rating">4.5 Starts (10 reviews)</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <img class="product-image" src="../images/d4.jpg" alt="product" />
+                                <div class="product-name">
+                                    <a href="product.html">Responsibili Tee Shirt</a>
+                                </div>
+                                <div class="product-brand">Patagonia</div>
+                                <div class="product-price">$60,00</div>
+                                <div class="product-rating">4.5 Starts (10 reviews)</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <img class="product-image" src="../images/d5.jpg" alt="product" />
+                                <div class="product-name">
+                                    <a href="product.html">Up&Out Organic Shirt</a>
+                                </div>
+                                <div class="product-brand">Patagonia</div>
+                                <div class="product-price">$60,00</div>
+                                <div class="product-rating">4.5 Starts (10 reviews)</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <img class="product-image" src="../images/d6.jpg" alt="product" />
+                                <div class="product-name">
+                                    <a href="product.html">Lightweight Shirt</a>
+                                </div>
+                                <div class="product-brand">Patagonia</div>
+                                <div class="product-price">$55,00</div>
+                                <div class="product-rating">4.5 Starts (10 reviews)</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <img class="product-image" src="../images/d8.jpg" alt="product" />
+                                <div class="product-name">
+                                    <a href="product.html">Lightweight Shirt</a>
+                                </div>
+                                <div class="product-brand">Patagonia</div>
+                                <div class="product-price">$55,00</div>
+                                <div class="product-rating">4.5 Starts (10 reviews)</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <img class="product-image" src="../images/d7.jpg" alt="product" />
+                                <div class="product-name">
+                                    <a href="product.html">Lightweight Shirt</a>
+                                </div>
+                                <div class="product-brand">Patagonia</div>
+                                <div class="product-price">$55,00</div>
+                                <div class="product-rating">4.5 Starts (10 reviews)</div>
+                            </div>
+                        </li>
+                      
+                </div>
+                </ul>
+            </main> <!-- main section-->
+            <footer class="footer">All right reserved </footer>
+        </div>
+
+        <script>
+            function openMenu(){
+                document.querySelector(".sidebar").classList.add("open")
+            }
+            function closeMenu(){
+                document.querySelector(".sidebar").classList.remove("open")
+            }
+        </script>
+    </body>
+
+</html>
