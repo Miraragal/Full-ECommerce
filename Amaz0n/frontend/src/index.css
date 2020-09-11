@@ -12,6 +12,10 @@ body{
   margin: 0;
 }
 
+#root{ /* Altura de la pantalla para las segundas pantallas, no la HomePage*/
+  height: 100%;
+}
+
 .grid-container { /*We definine a new class, that's why we use dot. Grid:cuadricula */
   display: grid;  /* layouting the style in the html file */
   grid-template-areas: /* definimos las areas */
@@ -136,3 +140,68 @@ a:hover{
   top: 1.5rem; /*con estos 3 ultimos style situamos el boton a la derecha/top */
   font-size: 15px;
 }
+
+/*PRODUCT PAGE DETAILS */
+.details{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+#logo{
+  max-width: 14rem;
+  max-height: 14rem;
+}
+.details-image img{
+  max-width: 60rem;
+  
+}
+.details-image {
+  flex: 2 1 60rem;
+  widows: 100%; /*num min de lineas de un contenedor que se deben mostrar en la parte superior de la pagina, area o columna */ 
+}
+.details-info {
+  flex: 2 1 30rem;
+}
+.details-action {
+  flex: 2 1 30rem;
+}
+.details-info ul, .details-action ul{
+  list-style-type: none;
+  padding: 0;
+}
+.details-info li, .details-action li{
+  list-style-type: none;
+  padding: .5rem;
+}
+.back-to-result{
+  padding: 1rem;
+}
+
+.details-action {
+  border: .1rem #808080 solid;
+  border-radius: 1rem; /* esquinas del rectangulo redondeadas*/
+  background-color: #f0f0f0;
+  padding: 1rem;
+}
+
+.details-action ul li:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.button{
+  padding: 1rem;
+  background-color: #fca311;
+  border: .1rem #808080 solid;
+  border-radius: .5rem;
+  cursor: pointer; 
+}
+.button:hover{
+  border: .2rem #404040 solid;
+}
+
+
+
