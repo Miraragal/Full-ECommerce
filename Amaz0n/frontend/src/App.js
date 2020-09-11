@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.css";
+import data from "./data";
 
 function App() {
 
@@ -43,96 +44,25 @@ function App() {
       <main className="main">
         <div className="content">
           <ul className="products">
+            { data.products.map(product => // Combertimos lista productos en un array. Para ello, tenemos que crear un file 'data.js' con toda la info
             <li>
               <div className="product">
                 <img
                   className="product-image"
-                  src="../images/d1.jpg"
+                  src={product.image}
                   alt="product"
                 />
                 <div className="product-name">
-                  <a href="product.html">Lightweight Shirt</a>
+                  <a href="product.html">{product.name}</a>
                 </div>
-                <div className="product-brand">Patagonia</div>
-                <div className="product-price">$60,00</div>
-                <div className="product-rating">4.5 Starts (10 reviews)</div>
+                <div className="product-brand">{product.brand}</div>
+                <div className="product-price">$ {product.price}</div>
+                <div className="product-rating">{product.rating} Starts ({product.numReviews} reviews)</div>
               </div>
             </li>
-            <li>
-              <div className="product">
-                <img
-                  className="product-image"
-                  src="../images/d4.jpg"
-                  alt="product"
-                />
-                <div className="product-name">
-                  <a href="product.html">Responsibili Tee Shirt</a>
-                </div>
-                <div className="product-brand">Patagonia</div>
-                <div className="product-price">$60,00</div>
-                <div className="product-rating">4.5 Starts (10 reviews)</div>
-              </div>
-            </li>
-            <li>
-              <div className="product">
-                <img
-                  className="product-image"
-                  src="../images/d5.jpg"
-                  alt="product"
-                />
-                <div className="product-name">
-                  <a href="product.html">Up&Out Organic Shirt</a>
-                </div>
-                <div className="product-brand">Patagonia</div>
-                <div className="product-price">$60,00</div>
-                <div className="product-rating">4.5 Starts (10 reviews)</div>
-              </div>
-            </li>
-            <li>
-              <div className="product">
-                <img
-                  className="product-image"
-                  src="../images/d6.jpg"
-                  alt="product"
-                />
-                <div className="product-name">
-                  <a href="product.html">Lightweight Shirt</a>
-                </div>
-                <div className="product-brand">Patagonia</div>
-                <div className="product-price">$55,00</div>
-                <div className="product-rating">4.5 Starts (10 reviews)</div>
-              </div>
-            </li>
-            <li>
-              <div className="product">
-                <img
-                  className="product-image"
-                  src="../images/d8.jpg"
-                  alt="product"
-                />
-                <div className="product-name">
-                  <a href="product.html">Lightweight Shirt</a>
-                </div>
-                <div className="product-brand">Patagonia</div>
-                <div className="product-price">$55,00</div>
-                <div className="product-rating">4.5 Starts (10 reviews)</div>
-              </div>
-            </li>
-            <li>
-              <div className="product">
-                <img
-                  className="product-image"
-                  src="../images/d7.jpg"
-                  alt="product"
-                />
-                <div className="product-name">
-                  <a href="product.html">Lightweight Shirt</a>
-                </div>
-                <div className="product-brand">Patagonia</div>
-                <div className="product-price">$55,00</div>
-                <div className="product-rating">4.5 Starts (10 reviews)</div>
-              </div>
-            </li>
+              )}
+
+             
           </ul>
         </div>
       </main>

@@ -42,7 +42,7 @@ body{
 }
 
 .header-links a:hover{ /*hover viene a ser el puntero o señalador*/
-    color: #ff8000;
+    color:#fca311;
 
 }
 .main{
@@ -61,7 +61,7 @@ a{
     text-decoration: none; /* rid off the underline */
 }
 a:hover{
-    color: #ff8000;
+    color: #fca311;
 }
 
 /* HOME SCREEN*/
@@ -118,7 +118,7 @@ a:hover{
     position: fixed; /* to keep it on top to the screen */
     transform: translateX(-30rem); 
     width: 30rem; /*con estos style mantenemos el sidebar a la izq afuera de la pantalla */
-    background-color: #f0f0f0;
+    background-color: #e5e5e5;
     height: 100%;
 }
 .sidebar.open{
