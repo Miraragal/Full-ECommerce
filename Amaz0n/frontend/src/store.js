@@ -1,13 +1,15 @@
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
-import {productListReducer} from './reducers/productReducers.js';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {productListReducer, productDetailsReducer} from './reducers/productReducers.js';
 import thunk from 'redux-thunk';
+
 
 
 const initialState={}
 
 // reducer es una function dado un state y una action retorna una nueva action basada en ese state
 const reducer = combineReducers ({  
-    productList: productListReducer
+    productList: productListReducer, 
+    productDetails: productDetailsReducer
 })
 
 // inside the createStore method we need 3 parameters: reducer, initialState, middleware
