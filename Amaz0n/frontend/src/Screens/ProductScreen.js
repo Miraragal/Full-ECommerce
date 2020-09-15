@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { detailsProduct } from "../actions/productActions.js";
 
 function ProductScreen(props) {
-
+  
   //we define a hook for wraping a qty insert by the user with default value 1
   const [qty, setQty]= useState(1)
   const productDetails = useSelector((state) => state.productDetails);
   const { product, loading, error } = productDetails;
   const dispatch = useDispatch();
 
+  
   useEffect(() => {
     dispatch(detailsProduct(props.match.params.id)); // we need to match the props with el id de cada producto
     return () => {
@@ -27,7 +28,6 @@ function ProductScreen(props) {
   const handleAddToCart= () => {
     props.history.push("/cart/" + props.match.params.id + "?qty="+ qty )
   }
-
   return (
     <div>
       <div className="back-to-result">
@@ -69,10 +69,11 @@ function ProductScreen(props) {
                 Qty:<select value={qty} onChange ={(e) => {setQty(e.target.value)}}> 
                 {/* creamos un spread array donde para cada key countInStock en el object product, para cada option me da un nuevo array 
                 donde me devuelve el index+1 (no queremos 0) */}
+                {/* [...Array(product.countInStock).keys()]  Nos da un array con la arr.length*/}
                 {[...Array(product.countInStock).keys()].map(x=>
                   <option key={x+1} value={x+1}>
                     {x+1}
-                  </option>)}
+                  </option>)} 
                 </select>
               </li>
 
@@ -84,7 +85,10 @@ function ProductScreen(props) {
         </div>
       )}
     </div>
+
   );
 }
+
+
 
 export default ProductScreen;

@@ -1,15 +1,20 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {productListReducer, productDetailsReducer} from './reducers/productReducers.js';
 import thunk from 'redux-thunk';
+import {cartReducer} from './reducers/cartReducers'
+import Cookie from 'js-cookie';
 
 
+// we set access to the cookie and pass its value to the InitialState
+const cartItems= Cookie.getJSON("cartItems") || [];
 
-const initialState={}
+const initialState={cart:{cartItems}}
 
 // reducer es una function dado un state y una action retorna una nueva action basada en ese state
 const reducer = combineReducers ({  
     productList: productListReducer, 
-    productDetails: productDetailsReducer
+    productDetails: productDetailsReducer,
+    cart: cartReducer
 })
 
 // inside the createStore method we need 3 parameters: reducer, initialState, middleware
