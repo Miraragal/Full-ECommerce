@@ -1,9 +1,13 @@
 import express from 'express'
+import jwt from 'jsonwebtoken';
+import config from '../config';
 import User from '../models/userModel.js'
-import {getToken} from '../util'
+// import getToken from '../util.js'
+
 
 //al igual que hicimos en server utilizamos node express para definir las rutas
 const router= express.Router()
+
 
 router.get("/createadmin", async (req, res)=> { /// [/api/users] we have this part in the server /createadmin y automaticamente se concatena
     try {
@@ -23,6 +27,24 @@ router.get("/createadmin", async (req, res)=> { /// [/api/users] we have this pa
 
 
 //ROUTE FOR SIGN IN
+
+//Hemos movido aqui getToken. ERROR donde decia que no lo encontraba en utils... Ni flowers!!
+const getToken = (user) => {
+  return jwt.sign(    // 3parameters: payload ,secret key to encript the payload and the expire time
+    {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    },
+    config.JWT_SECRET,
+    {
+      expiresIn: '48h',
+    }
+  )
+}
+
+
 router.post("/signin", async (req,res) => {
     console.log('signing in')
     const signinUser= await User.findOne ({
@@ -37,7 +59,7 @@ router.post("/signin", async (req,res) => {
             name: signinUser.name,
             email: signinUser.email,
             isAdmin: signinUser.isAdmin,
-            // token: getToken(signinUser)
+            token: getToken(signinUser)
             //we send back a token that is an identifyer where we can
             //recognize the next request is authenticated or not
         })
@@ -61,7 +83,7 @@ router.post('/register', async (req, res) => {
         name: newUser.name,
         email: newUser.email,
         isAdmin: newUser.isAdmin,
-        // token: getToken(newUser),
+        token: getToken(newUser)
       })
     } else {
       res.status(401).send({ message: 'Invalid User Data.' })
