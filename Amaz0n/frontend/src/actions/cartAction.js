@@ -1,4 +1,4 @@
-import axios from "axios";
+import Axios from "axios";
 import { CART_ADD_ITEM,CART_REMOVE_ITEM} from "../constants/cartConstants";
 import Cookie from 'js-cookie'
 
@@ -6,7 +6,7 @@ import Cookie from 'js-cookie'
 const addToCart = (productId, qty)=> async (dispatch, getState) =>{ //after adding item to the can we use getState from thunk para recuperar el item anadido
     
     try{
-        const {data}= await axios.get("/api/products/"+ productId)
+        const {data}= await Axios.get("/api/products/"+ productId)
         
         dispatch({type: CART_ADD_ITEM, payload: {
             product: data._id,
