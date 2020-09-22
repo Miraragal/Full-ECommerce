@@ -1,7 +1,7 @@
-import { CART_ADD_ITEM, CART_REMOVE_ITEM} from "../constants/cartConstants"
+import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_PAYMENT, CART_SAVE_SHIPPING} from "../constants/cartConstants"
 
 
-function cartReducer (state= {cartItems: []}, action){ 
+function cartReducer (state= {cartItems: [],shipping:{}, payment:{} }, action){ 
 
     switch(action.type){
         case CART_ADD_ITEM: 
@@ -17,14 +17,24 @@ function cartReducer (state= {cartItems: []}, action){
                 // si el pto existe vemos si cada item/pto esta ya en el cart,  mapeamos para comprobar que coinciden y si es asi (el segundo product es el id del product) 
                 //devolvemos el nuevo  valor de qty del product, sino mantenemos x que seria el anterior valor de qty para ese pto 
                 // Si inserto en el cart un pto que ya existe en el cart, aplicamos item que seria el nuevo valor de qty del producto 
-            } return { cartItems: [...state.cartItems, item]}
+            } return { cartItems: [...state.cartItems, item]};
             //devovelmos el cartItems actualizado con el previo valor de state pero anadiendo item
 
-            case CART_REMOVE_ITEM: 
+        case CART_REMOVE_ITEM: 
                 return {
                      cartItems: 
                      state.cartItems.filter(x=> x.product !== action.payload)
-                }
+                };
+
+        case CART_SAVE_SHIPPING:
+            return {
+                ...state, shipping: action.payload
+            };
+        
+        case CART_SAVE_PAYMENT:
+            return {
+                ...state, payment: action.payload
+            }
        
         default:  // In the default case we return the  current state with no changes
             return state 

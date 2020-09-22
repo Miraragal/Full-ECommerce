@@ -347,7 +347,7 @@ tbody > tr:nth-child(odd) { /* Specify a background color for every <tr> element
   flex: 1 1;
   padding-top: 1rem;
 }
-.checkout-steps > div.active {
+.checkout-steps > div.active {  /* div que esta activo*/
   border-top: 0.3rem #f08000 solid;
   color: #f08000;
 }

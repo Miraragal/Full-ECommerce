@@ -12,7 +12,7 @@ const cartItems= Cookie.getJSON("cartItems") || [];
 const userInfo=Cookie.getJSON('userInfo') || null;
 
 
-const initialState={cart:{cartItems}, userSignin:{userInfo}}
+const initialState={cart:{cartItems}, shippping:{}, payment:{}, userSignin:{userInfo}}
 
 // reducer es una function dado un state y una action retorna una nueva action basada en ese state
 const reducer = combineReducers ({  

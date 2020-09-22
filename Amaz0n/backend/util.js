@@ -46,4 +46,4 @@ import config from './config';
 
 
 
-export default { getToken, isAuth, isAdmin };
+export default { isAuth, isAdmin };

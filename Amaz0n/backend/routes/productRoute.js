@@ -1,6 +1,6 @@
 import express from 'express'
 import Product from '../models/productModel.js'
-import {isAuth, isAdmin, getToken} from '../util.js'
+import {isAuth, isAdmin} from '../util.js'
 
 
 //al igual que hicimos en server utilizamos node express para definir las rutas
@@ -13,9 +13,17 @@ router.get("/", async (req, res)=> {
   res.send(products)
 })
 
+router.get('/:id', async (req, res) => {
+  const product = await Product.findOne({ _id: req.params.id });
+  if (product) {
+    res.send(product);
+  } else {
+    res.status(404).send({ message: 'Product Not Found.' });
+  }
+});
 
 //POST envia info
-router.post("/", isAuth, isAdmin, async (req, res)=> {   // anadiriamos isAuth, isAdmin antes de async para limitat crear/editar/eliminar productos solo a la persona deseada
+router.post("/", async (req, res)=> {   // anadiriamos isAuth, isAdmin antes de async para limitat crear/editar/eliminar productos solo a la persona deseada
   const product= new Product({ //creamos un nuevo producto que sera lo que hemos recibido del frontend 
     name: req.body.name,
     image: req.body.image,
@@ -35,7 +43,7 @@ router.post("/", isAuth, isAdmin, async (req, res)=> {   // anadiriamos isAuth, 
 })
 
 //PUT anade info
-router.put('/:id', isAuth, isAdmin,async (req, res) => {
+router.put('/:id',async (req, res) => {
   const productId = req.params.id;
   const product = await Product.findById(productId);
   if (product) {
@@ -57,7 +65,7 @@ router.put('/:id', isAuth, isAdmin,async (req, res) => {
 })
 
 //DELETE elimina info
-router.delete('/:id', isAuth, isAdmin,async (req, res) => {
+router.delete('/:id',async (req, res) => {
   const deletedProduct = await Product.findById(req.params.id)
 
   if (deletedProduct) {
