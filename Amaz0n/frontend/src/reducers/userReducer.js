@@ -1,5 +1,5 @@
 
-import {USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS,USER_SIGNIN_FAILED,USER_REGISTER_REQUEST,USER_REGISTER_SUCCESS,USER_REGISTER_FAILED}from '../constants/userConstants';
+import {USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS,USER_SIGNIN_FAILED,USER_REGISTER_REQUEST,USER_REGISTER_SUCCESS,USER_REGISTER_FAILED, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS, USER_UPDATE_FAILED}from '../constants/userConstants';
 
 
 function userSigninReducer (state= {}, action){ // the default function is gonna be the product  with an empty object
@@ -31,4 +31,17 @@ function userRegisterReducer(state = {}, action) {
     }
   }
 
-export {userSigninReducer, userRegisterReducer};
+  function userUpdateReducer(state = {}, action) {
+    switch (action.type) {
+      case USER_UPDATE_REQUEST:
+        return { loading: true };
+      case USER_UPDATE_SUCCESS:
+        return { loading: false, userInfo: action.payload };
+      case USER_UPDATE_FAILED:
+        return { loading: false, error: action.payload };
+      default: return state;
+    }
+  }
+
+
+export {userSigninReducer, userRegisterReducer, userUpdateReducer};

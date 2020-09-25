@@ -3,7 +3,8 @@ import {productListReducer, productDetailsReducer, productSaveReducer, productDe
 import thunk from 'redux-thunk';
 import {cartReducer} from './reducers/cartReducers'
 import Cookie from 'js-cookie';
-import { userSigninReducer,  userRegisterReducer } from './reducers/userReducer.js';
+import { userSigninReducer,  userRegisterReducer, userUpdateReducer } from './reducers/userReducer.js';
+import { myOrderListReducer, orderCreateReducer, orderDeleteReducer, orderDetailsReducer, orderListReducer, orderPayReducer } from './reducers/orderReducers.js';
 
 
 
@@ -21,8 +22,15 @@ const reducer = combineReducers ({
     cart: cartReducer,
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
+    userUpdate: userUpdateReducer,
     productSave: productSaveReducer,
-    productDelete: productDeleteReducer
+    productDelete: productDeleteReducer,
+    orderCreate: orderCreateReducer,
+    orderDetails: orderDetailsReducer,
+    orderPay: orderPayReducer,
+    myOrderList: myOrderListReducer,
+    orderList: orderListReducer,
+    orderDelete: orderDeleteReducer
 
 })
 

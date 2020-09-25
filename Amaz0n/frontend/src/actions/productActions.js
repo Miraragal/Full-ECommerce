@@ -14,11 +14,21 @@ import {
 } from '../constants/productConstants';
 import Axios from "axios";
 
-const listProducts = () => async (dispatch) => {
+const listProducts = (
+  category = '',
+  searchKeyword = '',
+  sortOrder = ''
+) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST }); // action que dispatch
-    const { data } = await Axios.get("/api/products"); // trasladamos data from the server
-
+    const { data } = await Axios.get(
+      '/api/products?category=' +  // trasladamos data from the server
+        category +
+        '&searchKeyword=' +
+        searchKeyword +
+        '&sortOrder=' +
+        sortOrder
+    );
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data }); // seguna action que dispatch, tras realizar la action Request cogemos la info del servidor y en esta action con payload la dispatchamos
   } catch (error) {
     dispatch({ type: PRODUCT_LIST_FAILED, payload: error.message });

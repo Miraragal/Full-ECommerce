@@ -11,6 +11,9 @@ import ProductsScreen from "./screens/ProductsScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrdersScreen from './screens/OrdersScreen'
+import OrderScreen from './screens/OrderScreen'
+import ProfileScreen from './screens/ProfileScreen'
 
 
 function App() {
@@ -29,40 +32,52 @@ function App() {
 
   return (
     <BrowserRouter>
-   
-    <div className="grid-container">
-      <header className="header">
-        <div className="brand">
-          <button onClick={openMenu}>&#9776;</button>
-          {/* Cambiamos el link a la HomePage con el elemento Link de router-dom */} {/* <a href="index.html">Amaz0n</a> */}
-          <Link to="/">Amaz0n</Link> 
-        </div>
-        <div className="header-links">
-          <a href="cart.html">Cart</a>
-          {userInfo ? (
+      <div className="grid-container">
+        <header className="header">
+          <div className="brand">
+            <button onClick={openMenu}>&#9776;</button>
+              {/* Cambiamos el link a la HomePage con el elemento Link de router-dom */} {/* <a href="index.html">Amaz0n</a> */}
+            <Link to="/">amazona</Link>
+          </div>
+          <div className="header-links">
+            <a href="/cart">Cart</a>
+            {userInfo ? (
               <Link to="/profile">{userInfo.name}</Link>
             ) : (
               <Link to="/signin">Sign In</Link>
             )}
-        </div>
-      </header>
-      <aside className="sidebar">
-        <h3>Shopping Categories</h3>
-        <button className="sidebar-close-button" onClick={closeMenu}>
-          X
-        </button>
-        <ul>
-          <li>
-            <a href="index.html">Shirts</a>
-          </li>
-          <li>
-            <a href="index.html">Sweaters</a>
-          </li>
-        </ul>
-      </aside>
-
+            {userInfo && (
+              <div className="dropdown">
+                <a href="#">Admin</a>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/orders">Orders</Link>
+                    <Link to="/products">Products</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+        </header>
+        <aside className="sidebar">
+          <h3>Shopping Categories</h3>
+          <button className="sidebar-close-button" onClick={closeMenu}>
+            x
+          </button>
+          <ul className="categories">
+            <li>
+              <Link to="/category/Sweaters">Sweaters</Link>
+            </li>
+            <li>
+              <Link to="/category/Shirts">Shirts</Link>
+            </li>
+          </ul>
+        </aside>
       <main className="main">
         <div className="content">
+            <Route path="/orders"  component={OrdersScreen} /> 
+            <Route path="/order/:id" component={OrderScreen} />
+            <Route path="/profile" component={ProfileScreen} />
             <Route path="/products"  component={ProductsScreen} /> 
             <Route path="/shipping"  component={ShippingScreen} />
             <Route path="/payment"  component={PaymentScreen} />
@@ -71,6 +86,7 @@ function App() {
             <Route path="/register" component={RegisterScreen} />
             <Route path="/product/:id" component={ProductScreen} />
             <Route path="/" exact={true} component={HomeScreen} />
+            <Route path="/category/:id" component={HomeScreen} />
             <Route path="/cart/:id?"  component={CartScreen} /> 
             {/* ? means opticional */}
         </div>
