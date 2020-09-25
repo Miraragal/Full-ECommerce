@@ -47,7 +47,7 @@ function HomeScreen(props) {
     //   error? <div>{error}</div>:
     //Movemos la ul de App.js a HomeScreen
     <>
-      {category && <h2>{category}</h2>}
+      {/* {category && <h2>{category}</h2>} */}
       <ul className="filter">
         <li>
           <form onSubmit={submitHandler}>
