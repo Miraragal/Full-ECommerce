@@ -23,6 +23,7 @@ A fully-functional e-commerce website like Amazon using ReactJS & Node & MongoDB
     <td align=""><img src="https://github.com/Miraragal/Full-ECommerce/blob/master/Amaz0n/images/00001AmazonaProject.png" width="600px;"/></td
   </tr>
 </table>
+  
 
 ## Technologies
 
@@ -44,19 +45,26 @@ A fully-functional e-commerce website like Amazon using ReactJS & Node & MongoDB
 
 #### Requirements 
 
-```javascript
 
 1. Install MongoDB:
+
 Download it from here: https://docs.mongodb.com/manual/administration/install-community/
-
-2. Run Backend
-$ npm install
-$ npm start
-
-3. Run Frontend
-*open new terminal*
-$ cd frontend
-$ npm install
-$ npm start
-
+``` 
+mongo
+use amaz0n
 ```
+2. Run Backend:
+```
+npm install
+npm start
+```
+
+3. Run Frontend:
+
+*open new terminal*
+```
+cd frontend
+npm install
+npm start
+```
+
